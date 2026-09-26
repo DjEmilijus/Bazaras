@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BAZARAS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #32205f, #100d18 45%, #050507);
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 55px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 15px 0;
+
+            background: #17171d;
+            border: 1px solid #333;
+            border-radius: 15px;
+
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.04);
+            background: #25252e;
+        }
+
+        .minecraft {
+            border-color: #55ff55;
+        }
+
+        .discord {
+            border-color: #5865F2;
+        }
+
+        .tiktok {
+            border-color: #ff0050;
+        }
+
+        .youtube {
+            border-color: #ff0000;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>BAZARAS</h1>
+
+    <div class="subtitle">
+        Minecraft • Community • Socials
+    </div>
+
+    <a class="button minecraft">
+        🎮 Minecraft IP: bazaras.xyz
+    </a>
+
+    <a
+        class="button discord"
+        href="https://discord.gg/wwDPYmJNCG"
+        target="_blank"
+    >
+        💬 Join Discord
+    </a>
+
+    <a
+        class="button tiktok"
+        href="https://www.tiktok.com/coin?rc=5G37AZBA"
+        target="_blank"
+    >
+        🎵 TikTok Coins Recharge
+    </a>
+
+    <a
+        class="button youtube"
+        href="https://www.youtube.com/@Dj.Emilijus"
+        target="_blank"
+    >
+        ▶ Subscribe on YouTube
+    </a>
+
+    <footer>
+        © 2026 BAZARAS
+    </footer>
+
+</div>
+
+</body>
+</html>
