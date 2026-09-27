@@ -149,7 +149,11 @@
     .credits p { margin: 0; padding: 0 20px 18px 73px; color: #d5e3f0; font-size: 15px; line-height: 1.5; }
     .credits p strong { color: #d6ffa6; }
     @media (max-width: 680px) { .preview-grid { grid-template-columns: 1fr; } .content-preview { padding: 18px 0 46px; } .credits p { padding-left: 20px; } }
-    @media (max-width: 540px) { .topbar { flex-wrap: wrap; } .page-nav { width: 100%; } .page-nav a { min-height: 38px; padding: 0 11px; font-size: 12px; } }
+    .lang-switch { display: inline-flex; align-items: center; flex-shrink: 0; gap: 2px; padding: 4px; border: 1px solid #ffffff36; border-radius: 999px; background: #151c2dbc; backdrop-filter: blur(12px); }
+    .lang-switch button { min-width: 34px; min-height: 34px; padding: 0 6px; border: 0; border-radius: 999px; background: transparent; color: #c9d6e5; font-size: 12px; font-weight: 850; transition: background .2s, color .2s; }
+    .lang-switch button:hover { color: #f5ffe9; }
+    .lang-switch button[aria-pressed="true"] { color: #17251a; background: #c5ff93; }
+    @media (max-width: 540px) { .topbar { flex-wrap: wrap; } .page-nav { order: 3; width: 100%; } .page-nav a { min-height: 38px; padding: 0 11px; font-size: 12px; } .lang-switch { order: 2; margin-left: auto; } }
   </style>
 </head>
 <body>
@@ -159,75 +163,79 @@
   </div>
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#pradzia" aria-label="BAZARAS pradžia"><span class="brand-mark">B.</span><span>BAZARAS</span></a>
-      <nav class="page-nav" aria-label="Puslapio skiltys">
-        <a href="#pradzia">Pagrindinis</a>
-        <a href="#turinys" id="contentLink">Turinys <span class="nav-soon" id="contentBadge">nuorodos</span></a>
+      <a class="brand" href="#pradzia" aria-label="BAZARAS pradžia" data-i18n-aria="brandHome"><span class="brand-mark">B.</span><span>BAZARAS</span></a>
+      <nav class="page-nav" aria-label="Puslapio skiltys" data-i18n-aria="pageSections">
+        <a href="#pradzia" data-i18n="home">Pagrindinis</a>
+        <a href="#turinys" id="contentLink"><span data-i18n="content">Turinys</span> <span class="nav-soon" id="contentBadge">nuorodos</span></a>
       </nav>
+      <div class="lang-switch" role="group" aria-label="Kalba" data-i18n-aria="languageGroup">
+        <button type="button" data-language="lt" aria-pressed="true" aria-label="Lietuvių kalba">LT</button>
+        <button type="button" data-language="en" aria-pressed="false" aria-label="English language">EN</button>
+      </div>
     </header>
 
     <main id="pradzia">
       <section class="coming" id="coming" aria-labelledby="comingTitle">
         <div class="coming-copy">
-          <p class="eyebrow">Ruošiama nauja svetainė</p>
-          <h1 id="comingTitle">BAZARAS<span>jau pakeliui.</span></h1>
-          <p class="coming-lead">Jau visai netrukus čia atsivers BAZARAS svetainė. Kol kas sek laiką iki starto ir prisijunk prie mūsų bendruomenės.</p>
-          <p class="launch-date">Svetainės startas · 2026 m. lapkričio 1 d. · 00:00 Lietuvos laiku</p>
-          <div class="countdown" id="laikmatis" role="timer" aria-label="Laikas iki svetainės starto">
-            <div class="time-box"><strong id="days">--</strong><span>dienos</span></div>
-            <div class="time-box"><strong id="hours">--</strong><span>valandos</span></div>
-            <div class="time-box"><strong id="minutes">--</strong><span>minutės</span></div>
-            <div class="time-box"><strong id="seconds">--</strong><span>sekundės</span></div>
+          <p class="eyebrow" data-i18n="preparing">Ruošiama nauja svetainė</p>
+          <h1 id="comingTitle">BAZARAS<span data-i18n="onTheWay">jau pakeliui.</span></h1>
+          <p class="coming-lead" data-i18n="comingLead">Jau visai netrukus čia atsivers BAZARAS svetainė. Kol kas sek laiką iki starto ir prisijunk prie mūsų bendruomenės.</p>
+          <p class="launch-date" data-i18n="launchDate">Svetainės startas · 2026 m. lapkričio 1 d. · 00:00 Lietuvos laiku</p>
+          <div class="countdown" id="laikmatis" role="timer" aria-label="Laikas iki svetainės starto" data-i18n-aria="timeUntilLaunch">
+            <div class="time-box"><strong id="days">--</strong><span data-i18n="days">dienos</span></div>
+            <div class="time-box"><strong id="hours">--</strong><span data-i18n="hours">valandos</span></div>
+            <div class="time-box"><strong id="minutes">--</strong><span data-i18n="minutes">minutės</span></div>
+            <div class="time-box"><strong id="seconds">--</strong><span data-i18n="seconds">sekundės</span></div>
           </div>
           <div class="coming-actions">
-            <a class="discord-cta" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer">Sek naujienas „Discord“ <span aria-hidden="true">↗</span></a>
+            <a class="discord-cta" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer"><span data-i18n="discordNews">Sek naujienas „Discord“</span> <span aria-hidden="true">↗</span></a>
             <button class="server-chip" id="comingCopyIp" type="button" aria-label="Minecraft serveris. Žaidėjai 0 iš 100, versija 26.2. Spausk nukopijuoti adresą bazaras.xyz">
               <span class="server-chip-icon" aria-hidden="true">▦</span>
-              <span class="server-chip-text"><span class="server-chip-title" id="serverStatus">Minecraft · serveris greitu metu</span><span class="server-chip-detail">Žaidėjai <span id="previewPlayers">0/100</span> · versija 26.2</span></span>
+              <span class="server-chip-text"><span class="server-chip-title" id="serverStatus">Minecraft · serveris greitu metu</span><span class="server-chip-detail"><span data-i18n="players">Žaidėjai</span> <span id="previewPlayers">0/100</span> · <span data-i18n="versionLower">versija</span> 26.2</span></span>
             </button>
           </div>
         </div>
-        <div class="launch-art" aria-hidden="true"><div class="orbit"></div><div class="orbit"></div><div class="orbit"></div><div class="launch-core"><small>LAPKRITIS</small><strong>01</strong><span>2026</span></div><span class="art-caption">NETRUKUS</span></div>
+        <div class="launch-art" aria-hidden="true"><div class="orbit"></div><div class="orbit"></div><div class="orbit"></div><div class="launch-core"><small data-i18n="november">LAPKRITIS</small><strong>01</strong><span>2026</span></div><span class="art-caption" data-i18n="soon">NETRUKUS</span></div>
       </section>
       <section class="content-preview" id="turinys" aria-labelledby="contentTitle">
         <div class="content-header">
-          <p class="eyebrow">Kol laukiame starto</p>
-          <h2 id="contentTitle">Viskas vienoje vietoje.</h2>
-          <p>Svetainė startuos lapkričio 1 d., o svarbiausias BAZARAS nuorodas jau gali rasti čia.</p>
+          <p class="eyebrow" data-i18n="whileWaiting">Kol laukiame starto</p>
+          <h2 id="contentTitle" data-i18n="allInOne">Viskas vienoje vietoje.</h2>
+          <p data-i18n="contentLead">Svetainė startuos lapkričio 1 d., o svarbiausias BAZARAS nuorodas jau gali rasti čia.</p>
         </div>
-        <nav class="preview-grid" aria-label="BAZARAS turinys">
-          <a class="card youtube" href="https://www.youtube.com/@Dj.Emilijus" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">▶</span><span class="card-body"><span class="card-title">DJ Emilijus „YouTube“</span><span class="card-detail">Dainos ir nauji vaizdo įrašai</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
-          <a class="card discord" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">✦</span><span class="card-body"><span class="card-title">BAZARAS „Discord“</span><span class="card-detail">Prisijunk prie bendruomenės</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
-          <button class="card minecraft" id="previewCopyIp" type="button" aria-label="Kopijuoti Minecraft serverio adresą bazaras.xyz"><span class="card-icon" aria-hidden="true">▦</span><span class="card-body"><span class="card-title">Minecraft serveris · greitu metu</span><span class="card-detail">IP: bazaras.xyz · versija 26.2 · <span id="contentPlayers">0/100</span> žaidėjų</span></span><span class="card-arrow" aria-hidden="true">⧉</span></button>
-          <a class="card coins" href="https://www.tiktok.com/coin?rc=5G37AZBA" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">♪</span><span class="card-body"><span class="card-title">Pirkti „TikTok“ monetas</span><span class="card-detail">Patikrink kainą oficialiame „TikTok“ puslapyje</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+        <nav class="preview-grid" aria-label="BAZARAS turinys" data-i18n-aria="contentNav">
+          <a class="card youtube" href="https://www.youtube.com/@Dj.Emilijus" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">▶</span><span class="card-body"><span class="card-title" data-i18n="youtubeTitle">DJ Emilijus „YouTube“</span><span class="card-detail" data-i18n="youtubeDetail">Dainos ir nauji vaizdo įrašai</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+          <a class="card discord" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">✦</span><span class="card-body"><span class="card-title" data-i18n="discordTitle">BAZARAS „Discord“</span><span class="card-detail" data-i18n="discordDetail">Prisijunk prie bendruomenės</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
+          <button class="card minecraft" id="previewCopyIp" type="button" aria-label="Kopijuoti Minecraft serverio adresą bazaras.xyz" data-i18n-aria="copyMinecraft"><span class="card-icon" aria-hidden="true">▦</span><span class="card-body"><span class="card-title" id="previewServerTitle">Minecraft serveris · greitu metu</span><span class="card-detail">IP: bazaras.xyz · <span data-i18n="versionLower">versija</span> 26.2 · <span id="contentPlayers">0/100</span> <span data-i18n="playersGenitive">žaidėjų</span></span></span><span class="card-arrow" aria-hidden="true">⧉</span></button>
+          <a class="card coins" href="https://www.tiktok.com/coin?rc=5G37AZBA" target="_blank" rel="noopener noreferrer"><span class="card-icon" aria-hidden="true">♪</span><span class="card-body"><span class="card-title" data-i18n="coinsTitle">Pirkti „TikTok“ monetas</span><span class="card-detail" data-i18n="coinsDetail">Patikrink kainą oficialiame „TikTok“ puslapyje</span></span><span class="card-arrow" aria-hidden="true">↗</span></a>
         </nav>
       </section>
       <div class="live-site" id="liveSite" hidden>
       <section class="intro" aria-labelledby="site-title">
-        <p class="eyebrow">Tavo vieta internete</p>
+        <p class="eyebrow" data-i18n="yourPlace">Tavo vieta internete</p>
         <h1 id="site-title">BA<span class="headline-accent">ZARAS.</span></h1>
-        <p class="intro-lead">Prisijunk prie Minecraft serverio, atrask mūsų bendruomenę ir sek naujienas vienoje vietoje.</p>
-        <div class="intro-note">Pasirink, kur susitinkam.</div>
+        <p class="intro-lead" data-i18n="liveLead">Prisijunk prie Minecraft serverio, atrask mūsų bendruomenę ir sek naujienas vienoje vietoje.</p>
+        <div class="intro-note" data-i18n="chooseWhere">Pasirink, kur susitinkam.</div>
       </section>
 
-      <nav class="links" id="nuorodos" aria-label="BAZARAS nuorodos">
-        <div class="link-heading"><span>Nuorodos</span><span>01 / 04</span></div>
-        <button class="card minecraft" id="copyIp" type="button" aria-label="Kopijuoti Minecraft serverio adresą bazaras.xyz">
-          <span class="card-icon" aria-hidden="true">▦</span><span class="card-body"><span class="card-title" id="mainServerTitle">Minecraft serveris · greitu metu</span><span class="card-detail">IP: bazaras.xyz · versija 26.2 · <span id="mainPlayers">0/100</span> žaidėjų</span></span><span class="card-arrow" aria-hidden="true">⧉</span>
+      <nav class="links" id="nuorodos" aria-label="BAZARAS nuorodos" data-i18n-aria="linksNav">
+        <div class="link-heading"><span data-i18n="links">Nuorodos</span><span>01 / 04</span></div>
+        <button class="card minecraft" id="copyIp" type="button" aria-label="Kopijuoti Minecraft serverio adresą bazaras.xyz" data-i18n-aria="copyMinecraft">
+          <span class="card-icon" aria-hidden="true">▦</span><span class="card-body"><span class="card-title" id="mainServerTitle">Minecraft serveris · greitu metu</span><span class="card-detail">IP: bazaras.xyz · <span data-i18n="versionLower">versija</span> 26.2 · <span id="mainPlayers">0/100</span> <span data-i18n="playersGenitive">žaidėjų</span></span></span><span class="card-arrow" aria-hidden="true">⧉</span>
         </button>
-        <a class="card discord" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer" aria-label="Prisijungti prie Discord (atsidaro naujame skirtuke)">
-          <span class="card-icon" aria-hidden="true">✦</span><span class="card-body"><span class="card-title">Prisijunk prie Discord</span><span class="card-detail">Pokalbiai, naujienos ir bendruomenė</span></span><span class="card-arrow" aria-hidden="true">↗</span>
+        <a class="card discord" href="https://discord.gg/wwDPYmJNCG" target="_blank" rel="noopener noreferrer" aria-label="Prisijungti prie Discord (atsidaro naujame skirtuke)" data-i18n-aria="joinDiscordAria">
+          <span class="card-icon" aria-hidden="true">✦</span><span class="card-body"><span class="card-title" data-i18n="joinDiscord">Prisijunk prie Discord</span><span class="card-detail" data-i18n="discordLiveDetail">Pokalbiai, naujienos ir bendruomenė</span></span><span class="card-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="card coins" href="https://www.tiktok.com/coin?rc=5G37AZBA" target="_blank" rel="noopener noreferrer" aria-label="Papildyti TikTok monetas oficialiame TikTok puslapyje (atsidaro naujame skirtuke)">
-          <span class="card-icon" aria-hidden="true">♪</span><span class="card-body"><span class="card-title">Pirkti „TikTok“ monetas</span><span class="card-detail">Patikrink kainą oficialiame „TikTok“ puslapyje</span></span><span class="card-arrow" aria-hidden="true">↗</span>
+        <a class="card coins" href="https://www.tiktok.com/coin?rc=5G37AZBA" target="_blank" rel="noopener noreferrer" aria-label="Papildyti TikTok monetas oficialiame TikTok puslapyje (atsidaro naujame skirtuke)" data-i18n-aria="coinsAria">
+          <span class="card-icon" aria-hidden="true">♪</span><span class="card-body"><span class="card-title" data-i18n="coinsTitle">Pirkti „TikTok“ monetas</span><span class="card-detail" data-i18n="coinsDetail">Patikrink kainą oficialiame „TikTok“ puslapyje</span></span><span class="card-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="card youtube" href="https://www.youtube.com/@Dj.Emilijus" target="_blank" rel="noopener noreferrer" aria-label="Žiūrėti DJ Emilijus YouTube kanalą (atsidaro naujame skirtuke)">
-          <span class="card-icon" aria-hidden="true">▶</span><span class="card-body"><span class="card-title">DJ Emilijus „YouTube“</span><span class="card-detail">Dainos ir nauji vaizdo įrašai</span></span><span class="card-arrow" aria-hidden="true">↗</span>
+        <a class="card youtube" href="https://www.youtube.com/@Dj.Emilijus" target="_blank" rel="noopener noreferrer" aria-label="Žiūrėti DJ Emilijus YouTube kanalą (atsidaro naujame skirtuke)" data-i18n-aria="youtubeAria">
+          <span class="card-icon" aria-hidden="true">▶</span><span class="card-body"><span class="card-title" data-i18n="youtubeTitle">DJ Emilijus „YouTube“</span><span class="card-detail" data-i18n="youtubeDetail">Dainos ir nauji vaizdo įrašai</span></span><span class="card-arrow" aria-hidden="true">↗</span>
         </a>
       </nav>
       </div>
     </main>
-    <details class="credits" id="kurejas"><summary><span class="credits-symbol" aria-hidden="true">✦</span><span class="credits-label"><strong>Svetainės kūrėjas</strong><small>Paspausk ir sužinok</small></span><span class="credits-plus" aria-hidden="true">+</span></summary><p>BAZARAS projekto ir svetainės kūrėjas: <strong>DJ Emilijus</strong>.</p></details>
+    <details class="credits" id="kurejas"><summary><span class="credits-symbol" aria-hidden="true">✦</span><span class="credits-label"><strong data-i18n="siteCreator">Svetainės kūrėjas</strong><small data-i18n="tapToSee">Paspausk ir sužinok</small></span><span class="credits-plus" aria-hidden="true">+</span></summary><p><span data-i18n="creditText">BAZARAS projekto ir svetainės kūrėjas:</span> <strong>DJ Emilijus</strong>.</p></details>
     <footer><span>© 2026 BAZARAS</span><span id="footerStatus">Svetainės startas · lapkričio 1 d.</span></footer>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -239,6 +247,77 @@
       const launchTime = Date.parse('2026-11-01T00:00:00+02:00');
       const coming = document.getElementById('coming');
       const liveSite = document.getElementById('liveSite');
+      const translations = {
+        lt: {
+          titleSoon: 'BAZARAS — jau greitai', titleLive: 'BAZARAS — žaisk, bendrauk, atrask',
+          descriptionSoon: 'BAZARAS svetainė pasirodys 2026 m. lapkričio 1 d. Sek atgalinį skaičiavimą ir aplankyk mūsų nuorodas.',
+          descriptionLive: 'BAZARAS — Minecraft serveris, Discord bendruomenė ir DJ Emilijus nuorodos vienoje vietoje.',
+          brandHome: 'BAZARAS pradžia', pageSections: 'Puslapio skiltys', languageGroup: 'Kalba', home: 'Pagrindinis', content: 'Turinys', badgeLinks: 'nuorodos', badgeOpen: 'atidaryta',
+          preparing: 'Ruošiama nauja svetainė', onTheWay: 'jau pakeliui.', comingLead: 'Jau visai netrukus čia atsivers BAZARAS svetainė. Kol kas sek laiką iki starto ir prisijunk prie mūsų bendruomenės.',
+          launchDate: 'Svetainės startas · 2026 m. lapkričio 1 d. · 00:00 Lietuvos laiku', timeUntilLaunch: 'Laikas iki svetainės starto',
+          days: 'dienos', hours: 'valandos', minutes: 'minutės', seconds: 'sekundės', discordNews: 'Sek naujienas „Discord“', players: 'Žaidėjai', playersGenitive: 'žaidėjų', versionLower: 'versija',
+          november: 'LAPKRITIS', soon: 'NETRUKUS', whileWaiting: 'Kol laukiame starto', allInOne: 'Viskas vienoje vietoje.',
+          contentLead: 'Svetainė startuos lapkričio 1 d., o svarbiausias BAZARAS nuorodas jau gali rasti čia.', contentNav: 'BAZARAS turinys',
+          youtubeTitle: 'DJ Emilijus „YouTube“', youtubeDetail: 'Dainos ir nauji vaizdo įrašai', discordTitle: 'BAZARAS „Discord“', discordDetail: 'Prisijunk prie bendruomenės',
+          coinsTitle: 'Pirkti „TikTok“ monetas', coinsDetail: 'Patikrink kainą oficialiame „TikTok“ puslapyje', yourPlace: 'Tavo vieta internete',
+          liveLead: 'Prisijunk prie Minecraft serverio, atrask mūsų bendruomenę ir sek naujienas vienoje vietoje.', chooseWhere: 'Pasirink, kur susitinkam.',
+          linksNav: 'BAZARAS nuorodos', links: 'Nuorodos', joinDiscord: 'Prisijunk prie Discord', discordLiveDetail: 'Pokalbiai, naujienos ir bendruomenė',
+          siteCreator: 'Svetainės kūrėjas', tapToSee: 'Paspausk ir sužinok', creditText: 'BAZARAS projekto ir svetainės kūrėjas:', footerSoon: 'Svetainės startas · lapkričio 1 d.', footerLive: 'Svetainė atidaryta',
+          copyMinecraft: 'Kopijuoti Minecraft serverio adresą bazaras.xyz', joinDiscordAria: 'Prisijungti prie Discord (atsidaro naujame skirtuke)',
+          coinsAria: 'Papildyti TikTok monetas oficialiame TikTok puslapyje (atsidaro naujame skirtuke)', youtubeAria: 'Žiūrėti DJ Emilijus YouTube kanalą (atsidaro naujame skirtuke)',
+          statusOnline: 'Minecraft · serveris veikia', statusOffline: 'Minecraft · serveris greitu metu', statusUnknown: 'Minecraft · būsena nepatikrinta',
+          minecraftTitle: 'Minecraft serveris', minecraftSoon: 'Minecraft serveris · greitu metu', minecraftUnknown: 'Minecraft serveris · būsena nepatikrinta',
+          serverButtonAria: 'Žaidėjai {players}, versija 26.2. Spausk nukopijuoti adresą bazaras.xyz', copied: 'Nukopijuota: ', serverAddress: 'Serverio adresas: ',
+          switchToLt: 'Perjungti į lietuvių kalbą', switchToEn: 'Switch to English'
+        },
+        en: {
+          titleSoon: 'BAZARAS — coming soon', titleLive: 'BAZARAS — play, connect, discover',
+          descriptionSoon: 'BAZARAS launches on November 1, 2026. Follow the countdown and explore our links.',
+          descriptionLive: 'BAZARAS — Minecraft server, Discord community and DJ Emilijus links in one place.',
+          brandHome: 'BAZARAS home', pageSections: 'Page sections', languageGroup: 'Language', home: 'Home', content: 'Content', badgeLinks: 'links', badgeOpen: 'open',
+          preparing: 'A new website is on its way', onTheWay: 'coming soon.', comingLead: 'The BAZARAS website opens soon. Follow the countdown and join our community while you wait.',
+          launchDate: 'Website launch · November 1, 2026 · 00:00 Lithuania time', timeUntilLaunch: 'Time until the website launches',
+          days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds', discordNews: 'Get updates on Discord', players: 'Players', playersGenitive: 'players', versionLower: 'version',
+          november: 'NOVEMBER', soon: 'COMING SOON', whileWaiting: 'While we get ready', allInOne: 'Everything in one place.',
+          contentLead: 'The website launches on November 1, but you can already use these BAZARAS links.', contentNav: 'BAZARAS content',
+          youtubeTitle: 'DJ Emilijus on YouTube', youtubeDetail: 'Music and new videos', discordTitle: 'BAZARAS Discord', discordDetail: 'Join the community',
+          coinsTitle: 'Buy TikTok Coins', coinsDetail: 'Check the price on the official TikTok website', yourPlace: 'Your place online',
+          liveLead: 'Join the Minecraft server, discover our community and find updates in one place.', chooseWhere: 'Choose where we meet.',
+          linksNav: 'BAZARAS links', links: 'Links', joinDiscord: 'Join Discord', discordLiveDetail: 'Chats, updates and community',
+          siteCreator: 'Website creator', tapToSee: 'Tap to find out', creditText: 'BAZARAS project and website creator:', footerSoon: 'Website launch · November 1', footerLive: 'Website is open',
+          copyMinecraft: 'Copy Minecraft server address bazaras.xyz', joinDiscordAria: 'Join Discord (opens in a new tab)',
+          coinsAria: 'Buy TikTok Coins on the official TikTok website (opens in a new tab)', youtubeAria: 'Visit DJ Emilijus on YouTube (opens in a new tab)',
+          statusOnline: 'Minecraft · server online', statusOffline: 'Minecraft · server coming soon', statusUnknown: 'Minecraft · status unavailable',
+          minecraftTitle: 'Minecraft server', minecraftSoon: 'Minecraft server · coming soon', minecraftUnknown: 'Minecraft server · status unavailable',
+          serverButtonAria: 'Players {players}, version 26.2. Press to copy address bazaras.xyz', copied: 'Copied: ', serverAddress: 'Server address: ',
+          switchToLt: 'Switch to Lithuanian', switchToEn: 'Switch to English'
+        }
+      };
+      let language = 'lt';
+      try { if (localStorage.getItem('bazaras-language') === 'en') language = 'en'; } catch {}
+      let launched = false;
+      let currentServerState = 'offline';
+      let currentPlayers = '0/100';
+      const t = key => translations[language][key];
+      function applyLanguage() {
+        document.documentElement.lang = language;
+        document.querySelectorAll('[data-i18n]').forEach(element => { element.textContent = t(element.dataset.i18n); });
+        document.querySelectorAll('[data-i18n-aria]').forEach(element => { element.setAttribute('aria-label', t(element.dataset.i18nAria)); });
+        document.getElementById('contentBadge').textContent = t(launched ? 'badgeOpen' : 'badgeLinks');
+        document.getElementById('footerStatus').textContent = t(launched ? 'footerLive' : 'footerSoon');
+        document.title = t(launched ? 'titleLive' : 'titleSoon');
+        document.querySelector('meta[name="description"]').content = t(launched ? 'descriptionLive' : 'descriptionSoon');
+        document.querySelectorAll('[data-language]').forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.language === language));
+          button.setAttribute('aria-label', t(button.dataset.language === 'lt' ? 'switchToLt' : 'switchToEn'));
+        });
+        renderServerStatus(currentServerState, currentPlayers);
+      }
+      document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => {
+        language = button.dataset.language;
+        try { localStorage.setItem('bazaras-language', language); } catch {}
+        applyLanguage();
+      }));
       const timeParts = ['days', 'hours', 'minutes', 'seconds'].map(id => document.getElementById(id));
       let countdownInterval;
       function updateCountdown() {
@@ -247,11 +326,9 @@
           coming.hidden = true;
           document.getElementById('turinys').hidden = true;
           liveSite.hidden = false;
+          launched = true;
           document.getElementById('contentLink').setAttribute('href', '#nuorodos');
-          document.getElementById('contentBadge').textContent = 'atidaryta';
-          document.getElementById('footerStatus').textContent = 'Svetainė atidaryta';
-          document.title = 'BAZARAS — žaisk, bendrauk, atrask';
-          document.querySelector('meta[name="description"]').content = 'BAZARAS — Minecraft serveris, Discord bendruomenė ir DJ Emilijus nuorodos vienoje vietoje.';
+          applyLanguage();
           clearInterval(countdownInterval);
           return;
         }
@@ -259,9 +336,6 @@
         const values = [Math.floor(secondsLeft / 86400), Math.floor(secondsLeft / 3600) % 24, Math.floor(secondsLeft / 60) % 60, secondsLeft % 60];
         values.forEach((value, index) => { timeParts[index].textContent = String(value).padStart(2, '0'); });
       }
-      updateCountdown();
-      if (!coming.hidden) countdownInterval = setInterval(updateCountdown, 1000);
-
       const serverIp = 'bazaras.xyz';
       const toast = document.getElementById('toast');
       let toastTimer;
@@ -275,7 +349,7 @@
         if (event) event.preventDefault();
         try {
           await navigator.clipboard.writeText(serverIp);
-          announce('Nukopijuota: ' + serverIp);
+          announce(t('copied') + serverIp);
         } catch {
           // Clipboard access can be blocked on non-HTTPS previews.
           const field = document.createElement('textarea');
@@ -287,7 +361,7 @@
           let copied = false;
           try { copied = document.execCommand('copy'); } catch {}
           field.remove();
-          announce(copied ? 'Nukopijuota: ' + serverIp : 'Serverio adresas: ' + serverIp);
+          announce(t(copied ? 'copied' : 'serverAddress') + serverIp);
         }
       }
       document.getElementById('copyIp').addEventListener('click', copyIp);
@@ -300,19 +374,24 @@
       const contentPlayers = document.getElementById('contentPlayers');
       const mainPlayers = document.getElementById('mainPlayers');
       const serverStatus = document.getElementById('serverStatus');
+      const previewServerTitle = document.getElementById('previewServerTitle');
       const mainServerTitle = document.getElementById('mainServerTitle');
       let statusPending = false;
       let lastStatusCheck = 0;
       function renderServerStatus(state, players) {
+        currentServerState = state;
+        currentPlayers = players;
         const online = state === 'online';
-        const caption = online ? 'Minecraft · serveris veikia' : state === 'offline' ? 'Minecraft · serveris greitu metu' : 'Minecraft · būsena nepatikrinta';
+        const caption = t(online ? 'statusOnline' : state === 'offline' ? 'statusOffline' : 'statusUnknown');
         serverStatus.textContent = caption;
-        mainServerTitle.textContent = online ? 'Minecraft serveris' : 'Minecraft serveris · greitu metu';
+        const serverTitle = t(online ? 'minecraftTitle' : state === 'offline' ? 'minecraftSoon' : 'minecraftUnknown');
+        previewServerTitle.textContent = serverTitle;
+        mainServerTitle.textContent = serverTitle;
         previewPlayers.textContent = players;
         contentPlayers.textContent = players;
         mainPlayers.textContent = players;
         serverButton.dataset.online = String(online);
-        serverButton.setAttribute('aria-label', caption + '. Žaidėjai ' + players + ', versija 26.2. Spausk nukopijuoti adresą bazaras.xyz');
+        serverButton.setAttribute('aria-label', caption + '. ' + t('serverButtonAria').replace('{players}', players));
       }
       async function refreshServerStatus() {
         if (document.hidden || statusPending) return;
@@ -337,6 +416,9 @@
           statusPending = false;
         }
       }
+      updateCountdown();
+      applyLanguage();
+      if (!coming.hidden) countdownInterval = setInterval(updateCountdown, 1000);
       refreshServerStatus();
       setInterval(refreshServerStatus, 60_000);
       document.addEventListener('visibilitychange', () => {
